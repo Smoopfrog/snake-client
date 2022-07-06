@@ -17,10 +17,12 @@ const connect = function () {
   });
 
   let name = 'JSS'
+  // let direction = 'up'
   // Connect event
   conn.on('connect', () => {
     console.log('Successfully connected to game server.')
     conn.write(`Name: ${name}`);
+    setInterval(() =>  conn.write(`Move: ${direction}`), 50);
   })
 
   // Snek name
