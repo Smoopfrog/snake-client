@@ -1,4 +1,5 @@
 const net = require("net");
+const stdin = process.stdin;
 
 // establishes a connection with the game server
 const connect = function () {
@@ -9,10 +10,20 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-
+  
+  // recieves data 
   conn.on("data", (data) => {
     console.log(data)
   });
+
+  let name = 'JSS'
+  // Connect event
+  conn.on('connect', () => {
+    console.log('Successfully connected to game server.')
+    conn.write(`Name: ${name}`);
+  })
+
+  // Snek name
   return conn;
 };
 
