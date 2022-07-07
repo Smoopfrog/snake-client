@@ -48,6 +48,21 @@ const handleUserInput = (key) => {
     clearInterval(myInterval);
     interval('Move: right');
   }
+
+  // Say Hello sneks!
+  if (key === 'h') {
+    connection.write('Say: Hello sneks!')
+  }
+
+  // Say Goodbye sneks!
+  if (key === 'g') {
+    connection.write('Say: Goodbye sneks!')
+  }
+
+  // Say Keep on sneking! 
+  if (key === 'j') {
+    connection.write('Say: Keep on sneking! ')
+  }
 };
 
 module.exports = setupInput;
