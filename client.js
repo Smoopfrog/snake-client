@@ -11,19 +11,18 @@ const connect = () => {
   // interpret incoming data as text
   conn.setEncoding("utf8");
   
-  // recieves data 
+  // recieves data
   conn.on("data", (data) => {
-    console.log(data)
+    console.log(data);
   });
 
-  let name = 'JSS'
-  let direction = 'up'
+  let name = 'JSS';
 
   // Connect event
   conn.on('connect', () => {
-    console.log('Successfully connected to game server.')
+    console.log('Successfully connected togame server.');
     conn.write(`Name: ${name}`);
-  })
+  });
 
   // Snek name
   return conn;

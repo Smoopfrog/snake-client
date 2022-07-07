@@ -21,7 +21,7 @@ const handleUserInput = (key) => {
   // interval function
   const interval = function(key) {
     myInterval = setInterval(() =>  connection.write(key), 50);
-  } 
+  };
   
   //Exit game
   if (key === '\u0003') {
@@ -30,25 +30,25 @@ const handleUserInput = (key) => {
   }
 
   // Move up
-  if(key === 'w') {
+  if (key === 'w') {
     clearInterval(myInterval);
     interval(upKey);
   }
 
   // Move down
-  if(key === 's') {
+  if (key === 's') {
     clearInterval(myInterval);
     interval(downKey);
   }
 
   // Move left
-  if(key === 'a') {
+  if (key === 'a') {
     clearInterval(myInterval);
     interval(leftKey);
   }
 
   //Move right
-  if(key === 'd') {
+  if (key === 'd') {
     clearInterval(myInterval);
     interval(rightKey);
   }
