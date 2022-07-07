@@ -1,7 +1,7 @@
 const net = require("net");
 
 // establishes a connection with the game server
-const connect = function () {
+const connect = () => {
   const conn = net.createConnection({
     host: '165.227.47.243',
     port: '50541'
@@ -17,12 +17,11 @@ const connect = function () {
 
   let name = 'JSS'
   let direction = 'up'
-  
+
   // Connect event
   conn.on('connect', () => {
     console.log('Successfully connected to game server.')
     conn.write(`Name: ${name}`);
-    setInterval(() =>  conn.write(`Move: ${direction}`), 50);
   })
 
   // Snek name

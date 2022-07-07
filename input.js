@@ -1,5 +1,8 @@
+let connection;
+
 // setup interface to handle user input from stdin
-const setupInput = function () {
+const setupInput = (conn) => {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -8,10 +11,42 @@ const setupInput = function () {
   return stdin;
 };
 
-const handleUserInput = (data) => {
-  if (data === '\u0003') {
+let myInterval;
+
+// Key inputs
+const handleUserInput = (key) => {
+  const interval = function(key) {
+    myInterval = setInterval(() =>  connection.write(key), 50);
+  } 
+  
+  //Exit game
+  if (key === '\u0003') {
     process.stdout.write('Goodbye!\n');
     process.exit();
+  }
+
+  // Move up
+  if(key === 'w') {
+    clearInterval(myInterval);
+    interval('Move: up');
+  }
+
+  // Move down
+  if(key === 's') {
+    clearInterval(myInterval);
+    interval('Move: down');
+  }
+
+  // Move left
+  if(key === 'a') {
+    clearInterval(myInterval);
+    interval('Move: left');
+  }
+
+  //Move right
+  if(key === 'd') {
+    clearInterval(myInterval);
+    interval('Move: right');
   }
 };
 
