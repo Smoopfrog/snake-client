@@ -1,5 +1,4 @@
 const net = require("net");
-const stdin = process.stdin;
 
 // establishes a connection with the game server
 const connect = function () {
@@ -17,7 +16,8 @@ const connect = function () {
   });
 
   let name = 'JSS'
-  // let direction = 'up'
+  let direction = 'up'
+  
   // Connect event
   conn.on('connect', () => {
     console.log('Successfully connected to game server.')
