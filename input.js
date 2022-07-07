@@ -1,3 +1,5 @@
+const {upKey, leftKey, downKey, rightKey, messages} = require("./constants");
+
 let connection;
 
 // setup interface to handle user input from stdin
@@ -15,6 +17,8 @@ let myInterval;
 
 // Key inputs
 const handleUserInput = (key) => {
+ 
+  // interval function
   const interval = function(key) {
     myInterval = setInterval(() =>  connection.write(key), 50);
   } 
@@ -28,40 +32,30 @@ const handleUserInput = (key) => {
   // Move up
   if(key === 'w') {
     clearInterval(myInterval);
-    interval('Move: up');
+    interval(upKey);
   }
 
   // Move down
   if(key === 's') {
     clearInterval(myInterval);
-    interval('Move: down');
+    interval(downKey);
   }
 
   // Move left
   if(key === 'a') {
     clearInterval(myInterval);
-    interval('Move: left');
+    interval(leftKey);
   }
 
   //Move right
   if(key === 'd') {
     clearInterval(myInterval);
-    interval('Move: right');
+    interval(rightKey);
   }
 
-  // Say Hello sneks!
-  if (key === 'h') {
-    connection.write('Say: Hello sneks!')
-  }
-
-  // Say Goodbye sneks!
-  if (key === 'g') {
-    connection.write('Say: Goodbye sneks!')
-  }
-
-  // Say Keep on sneking! 
-  if (key === 'j') {
-    connection.write('Say: Keep on sneking! ')
+  // Send messages
+  if (messages[key]) {
+    connection.write(messages[key]);
   }
 };
 
